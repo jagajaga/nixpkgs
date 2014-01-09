@@ -1,4 +1,4 @@
-{ fetchurl, stdenv, python, cmake, vim, perl, ruby, unzip, which }:
+{ fetchurl, fetchgit, stdenv, python, cmake, vim, perl, ruby, unzip, which }:
 
 /*
 About Vim and plugins
@@ -109,10 +109,11 @@ in rec
   };
 
   YouCompleteMe = stdenv.mkDerivation {
-    # REGION AUTO UPDATE: { name="youcompleteme"; type="git"; url="git://github.com/Valloric/YouCompleteMe"; }
-    src = (fetchurl { url = "http://mawercer.de/~nix/repos/youcompleteme-git-97306.tar.bz2"; sha256 = "b9b892f5a723370c2034491dc72a4ca722c6cf1e5de4d60501141bba151bc719"; });
-    name = "youcompleteme-git-97306";
-    # END
+    src = fetchgit {
+       url = "https://github.com/Valloric/YouCompleteMe.git";
+     };
+ 
+    name = "youcompleteme-git-ee12530df0";
     buildInputs = [ python cmake ];
 
     configurePhase = ":";
