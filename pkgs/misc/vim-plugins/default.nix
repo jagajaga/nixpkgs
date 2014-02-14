@@ -1,4 +1,4 @@
-{ fetchurl, fetchgit, stdenv, python, cmake, vim, perl, ruby, unzip, which }:
+{ fetchurl, fetchgit, stdenv, python, cmake, vim, perl, ruby, unzip, which, clang }:
 
 /*
 About Vim and plugins
@@ -113,8 +113,8 @@ in rec
        url = "https://github.com/Valloric/YouCompleteMe.git";
      };
  
-    name = "youcompleteme-git-ee12530df0";
-    buildInputs = [ python cmake ];
+    name = "youcompleteme-git";
+    buildInputs = [ python cmake clang.clang ];
 
     configurePhase = ":";
 
@@ -125,7 +125,7 @@ in rec
 
       mkdir $target/build
       cd $target/build
-      cmake -G "Unix Makefiles" . $target/cpp -DPYTHON_LIBRARIES:PATH=${python}/lib/libpython2.7.so -DPYTHON_INCLUDE_DIR:PATH=${python}/include/python2.7
+      cmake -G "Unix Makefiles" . $target/cpp -DPYTHON_LIBRARIES:PATH=${python}/lib/libpython2.7.so -DPYTHON_INCLUDE_DIR:PATH=${python}/include/python2.7 -DUSE_CLANG_COMPLETER=ON -DUSE_SYSTEM_LIBCLANG=ON
       make -j -j''${NIX_BUILD_CORES} -l''${NIX_BUILD_CORES}}
 
       ${vimHelpTags}
