@@ -810,6 +810,8 @@ let
 
   biosdevname = callPackage ../tools/networking/biosdevname { };
 
+  cargo = callPackage ../development/tools/rust/cargo { };
+
   clamav = callPackage ../tools/security/clamav { };
 
   cloc = callPackage ../tools/misc/cloc {
