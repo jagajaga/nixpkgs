@@ -1,4 +1,4 @@
-{ stdenv, fetchgit, file, cmake, pkgconfig, rustc, wget, python }:
+{ stdenv, fetchgit, file, cmake, pkgconfig, rustc, wget, python, git }:
 
 stdenv.mkDerivation {
   name = "cargo-b3a9dee814";
@@ -9,7 +9,7 @@ stdenv.mkDerivation {
     sha256 = "1hfw8329rwnppxlbm3awkq6hj9xmbf7n1dx7rh69n49habk5r8hv";
   };
 
-  buildInputs = [ file cmake pkgconfig rustc wget python ];
+  buildInputs = [ file cmake pkgconfig rustc wget python git ];
 
   configurePhase = ''
     ./configure
