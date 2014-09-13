@@ -15,13 +15,8 @@ stdenv.mkDerivation {
     ./configure
   '';
 
-  buildPhase = ''
-    make
-  '';
-
-  installPhase = ''
-    make install
-  '';
+  preConfigure = ''
+  ''; #needed to avoid cmake using
 
   meta = {
     homepage = "http://cargo.io";
