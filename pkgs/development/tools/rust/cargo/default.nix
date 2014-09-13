@@ -11,8 +11,16 @@ stdenv.mkDerivation {
 
   buildInputs = [ file cmake pkgconfig rustc wget python ];
 
-  preConfigure = ''
+  configurePhase = ''
     ./configure
+  '';
+
+  buildPhase = ''
+    make
+  '';
+
+  installPhase = ''
+    make install
   '';
 
   meta = {
